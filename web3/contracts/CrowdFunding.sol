@@ -3,7 +3,7 @@ pragma solidity ^0.8.9;
 
 contract CrowdFunding {
     struct Campaign {
-        string memory owner;
+        address owner;
         string title;
         string description;
         uint256 target;
@@ -19,7 +19,7 @@ contract CrowdFunding {
     uint256 public numberOfCampaigns = 0;
 
     function createCampaign(
-        string memory _owner,
+        address _owner,
         string memory _title,
         string memory _description,
         uint256 _target,
@@ -30,7 +30,7 @@ contract CrowdFunding {
 
         require(
             campaign.deadline < block.timestamp,
-            "The deadline should be a date in the future."
+            "The deadline should be a date in future."
         );
 
         campaign.owner = _owner;
